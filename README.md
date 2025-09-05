@@ -1,6 +1,9 @@
 # DATA-1010-Introduction-to-Data-Analytics
 
-## Week 1 [link]()
+## Week 1 [link](https://github.com/hsarfraz/DATA-1010-Introduction-to-Data-Analytics/tree/main/week%201)
+
+* tidyverse library
+* variable types (categorical nominal, categorical ordinal, numerical discrete, numerical continuous)
 
 ## Week 2 [link]()
 
