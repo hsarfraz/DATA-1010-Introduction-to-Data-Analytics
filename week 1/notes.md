@@ -24,17 +24,17 @@ The mpg dataset describes the technical spec of cars
 
 # What are the key variables?
 
-1. manufacturer
-2. model
-3. displ:
-4. year
-5. cyl
-6. trans
-7. drv
-8. cty
-9. hwy
-10. fl
-11. class 
+1. manufacturer (categorical nominal)
+2. model (categorical nominal)
+3. displ (numeric continuous):
+4. year (categorical ordinal)
+5. cyl (categorical ordinal): number of cylinders 
+6. trans (categorical nominal)
+7. drv (categorical nominal)
+8. cty (numeric continuous)
+9. hwy (numeric continuous)
+10. fl (categorical nominal)
+11. class (categorical nominal)
 
 # What business/social questions could be answered with this dataset?
 
