@@ -4,6 +4,16 @@
 
 Tidyverse is a collection of R packages that data scientists commonly use in everyday data analyses. It includes packages for data import ( readr ), data visualization ( ggplot2 ), data manipulation ( dplyr , tidyr ), functional programming ( purrr ), and model building ( tidymodels ) etc.
 
+# Variable Types
+
+categorical nominal: A categorical variable that groups data into distinct categories that have no intrinsic order or rank.
+
+categorical ordinal: A categorical variable that groups data into distinct categories that have no intrinsic order or rank.
+
+numerical discrete: A number of possible measurements between two presumed points which have some sort of jump in between them
+
+numerical continuous: unspecified number of possible measurements between two presumed points
+
 # What is the dataset about?
 
 The mpg dataset describes the technical spec of cars
