@@ -24,14 +24,27 @@ The mpg dataset describes the technical spec of cars
 
 # What are the key variables?
 
-[Here is a description of the dataset](https://rpubs.com/shailesh/mpg-exploration)
+[Here is a description of the dataset](https://rpubs.com/shailesh/mpg-exploration) from RPubs
 
-1. manufacturer (categorical nominal)
-2. model (categorical nominal)
-3. displ (numeric continuous):
-4. year (categorical ordinal)
+| Column Name  | Variable Type | Variable Description |
+| ------------- | ------------- | ------------- |
+| manufacturer  | categorical nominal  | Content Cell  |
+| model  | categorical nominal  | Content Cell  |
+| model  | Content Cell  | Content Cell  |
+| model  | Content Cell  | Content Cell  |
+| model  | Content Cell  | Content Cell  |
+| model  | Content Cell  | Content Cell  |
+| model  | Content Cell  | Content Cell  |
+| model  | Content Cell  | Content Cell  |
+| model  | Content Cell  | Content Cell  |
+| model  | Content Cell  | Content Cell  |
+| model  | Content Cell  | Content Cell  |
+| model  | Content Cell  | Content Cell  |
+
+3. displ (numeric continuous): engine displacement in liters
+4. year (categorical ordinal): year of manufacturing
 5. cyl (categorical ordinal): number of cylinders 
-6. trans (categorical nominal)
+6. trans (categorical nominal): type of transmission
 7. drv (categorical nominal)
 8. cty (numeric continuous)
 9. hwy (numeric continuous)
