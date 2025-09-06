@@ -24,6 +24,8 @@ The mpg dataset describes the technical spec of cars
 
 # What are the key variables?
 
+[Here is a description of the dataset](https://rpubs.com/shailesh/mpg-exploration)
+
 1. manufacturer (categorical nominal)
 2. model (categorical nominal)
 3. displ (numeric continuous):
