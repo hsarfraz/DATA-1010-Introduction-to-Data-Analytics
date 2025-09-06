@@ -42,4 +42,7 @@ The mpg dataset describes the technical spec of cars
 
 # What business/social questions could be answered with this dataset?
 
+* Is there a link between car performance and a car's manufacturer?
+* Is there a link between the number of car cylinders and car displacement?
+
 # What summary stats or visualizations would give insight?
