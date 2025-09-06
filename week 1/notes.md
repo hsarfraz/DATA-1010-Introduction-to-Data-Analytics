@@ -46,3 +46,11 @@ The mpg dataset describes the technical spec of cars
 * Is there a link between the number of car cylinders and car displacement?
 
 # What summary stats or visualizations would give insight?
+
+I used 3 visualisations:
+
+| Plot Type  | X Axis Variable Type | Y Axis Variable Type | Plot Purpose |
+| ------------- | ------------- | ------------- | ------------- |
+| Box Plot  | categorical nominal  | Content Cell  | Content Cell  |
+| Scatter Plot w/ regression line  | categorical nominal  | Content Cell  | Content Cell  |
+| Scatter Plot w/ colors  | categorical nominal  | Content Cell  | Content Cell  |
