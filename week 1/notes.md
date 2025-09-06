@@ -30,26 +30,15 @@ The mpg dataset describes the technical spec of cars
 | ------------- | ------------- | ------------- |
 | manufacturer  | categorical nominal  | Content Cell  |
 | model  | categorical nominal  | Content Cell  |
-| model  | Content Cell  | Content Cell  |
-| model  | Content Cell  | Content Cell  |
-| model  | Content Cell  | Content Cell  |
-| model  | Content Cell  | Content Cell  |
-| model  | Content Cell  | Content Cell  |
-| model  | Content Cell  | Content Cell  |
-| model  | Content Cell  | Content Cell  |
-| model  | Content Cell  | Content Cell  |
-| model  | Content Cell  | Content Cell  |
-| model  | Content Cell  | Content Cell  |
-
-3. displ (numeric continuous): engine displacement in liters
-4. year (categorical ordinal): year of manufacturing
-5. cyl (categorical ordinal): number of cylinders 
-6. trans (categorical nominal): type of transmission
-7. drv (categorical nominal)
-8. cty (numeric continuous)
-9. hwy (numeric continuous)
-10. fl (categorical nominal)
-11. class (categorical nominal)
+| displ  | numeric continuous  | engine displacement in liters  |
+| year  | categorical ordinal  | year of manufacturing  |
+| cyl  | categorical ordinal  | number of cylinders  |
+| trans  | categorical nominal  | type of transmission  |
+| drv  | categorical nominal  | 	drive type  |
+| cty  | numeric continuous  | city mileage |
+| hwy  | numeric continuous  | highway mileage  |
+| fl  | categorical nominal  | fuel type  |
+| class  | categorical nominal  | vehicle class  |
 
 # What business/social questions could be answered with this dataset?
 
