@@ -6,9 +6,13 @@ Tidyverse is a collection of R packages that data scientists commonly use in eve
 
 # Variable Types
 
+<ins> categorical variables </ins>
+
 categorical nominal: A categorical variable that groups data into distinct categories that have no intrinsic order or rank.
 
 categorical ordinal: A categorical variable that groups data into distinct categories that have no intrinsic order or rank.
+
+<ins> numerical variables </ins>
 
 numerical discrete: A number of possible measurements between two presumed points which have some sort of jump in between them
 
