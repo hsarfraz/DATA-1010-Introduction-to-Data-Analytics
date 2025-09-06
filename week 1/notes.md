@@ -10,7 +10,7 @@ Tidyverse is a collection of R packages that data scientists commonly use in eve
 
 **categorical nominal**: A categorical variable that groups data into distinct categories that have no intrinsic order or rank.
 
-**categorical ordinal**: A categorical variable that groups data into distinct categories that have no intrinsic order or rank.
+**categorical ordinal**: A categorical variable that groups data into distinct categories that have a order or rank.
 
 <ins> numerical variables </ins>
 
