@@ -4,6 +4,9 @@
 
 * tidyverse library
 * variable types (categorical nominal, categorical ordinal, numerical discrete, numerical continuous)
+* Box Plot
+* Scatter Plot w/ regression line
+* Scatter Plot w/ colors
 
 ## Week 2 [link]()
 
