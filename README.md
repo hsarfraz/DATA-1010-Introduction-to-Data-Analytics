@@ -3,6 +3,7 @@
 ## Week 1 [link](https://github.com/hsarfraz/DATA-1010-Introduction-to-Data-Analytics/tree/main/week%201)
 
 * tidyverse library
+* ggplot package in the tidyverse library
 * variable types (categorical nominal, categorical ordinal, numerical discrete, numerical continuous)
 * Box Plot
 * Scatter Plot w/ regression line
