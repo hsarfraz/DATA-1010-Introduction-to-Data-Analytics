@@ -8,6 +8,10 @@
 * Box Plot
 * Scatter Plot w/ regression line
 * Scatter Plot w/ colors
+* Dataset name:
+* Dataset Size:
+* Any cleaning: No
+* Outputs produced:
 
 ## Week 2 [link]()
 
