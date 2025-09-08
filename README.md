@@ -5,9 +5,9 @@
 * tidyverse library
 * ggplot package in the tidyverse library to create graphs
 * variable types (categorical nominal, categorical ordinal, numerical discrete, numerical continuous)
-* Dataset name:
+* Dataset name: mpg dataset
 * Dataset Size:
-* Any cleaning: No
+* Any dataset cleaning: No
 * Outputs produced
   * Box Plot
   * Scatter Plot w/ regression line
