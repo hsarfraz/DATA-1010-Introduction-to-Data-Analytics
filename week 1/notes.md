@@ -1,3 +1,10 @@
+# General Dataset Info
+
+* About: The mpg dataset describes the technical spec of cars
+* Rows:
+* Columns:
+* 
+
 # What libraries were used?
 
 <ins> Tidyverse </ins>
@@ -17,10 +24,6 @@ Tidyverse is a collection of R packages that data scientists commonly use in eve
 **numerical discrete**: A number of possible measurements between two presumed points which have some sort of jump in between them
 
 **numerical continuous**: unspecified number of possible measurements between two presumed points
-
-# What is the dataset about?
-
-The mpg dataset describes the technical spec of cars
 
 # What are the key variables?
 
