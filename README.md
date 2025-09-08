@@ -5,13 +5,14 @@
 * tidyverse library
 * ggplot package in the tidyverse library to create graphs
 * variable types (categorical nominal, categorical ordinal, numerical discrete, numerical continuous)
-* Box Plot
-* Scatter Plot w/ regression line
-* Scatter Plot w/ colors
 * Dataset name:
 * Dataset Size:
 * Any cleaning: No
-* Outputs produced:
+* Outputs produced
+  * Box Plot
+  * Scatter Plot w/ regression line
+  * Scatter Plot w/ colors
+
 
 ## Week 2 [link]()
 
