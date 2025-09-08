@@ -1,6 +1,6 @@
 # General Dataset Info
 
-* About: The mpg dataset describes the technical spec of cars
+* About: This dataset provides fuel economy data from 1999 and 2008 for 38 popular models of cars.
 * Rows:
 * Columns:
 * 
