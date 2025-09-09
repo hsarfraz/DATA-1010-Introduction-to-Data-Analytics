@@ -1,9 +1,8 @@
 # General Dataset Info
 
 * About: This dataset provides fuel economy data from 1999 and 2008 for 38 popular models of cars.
-* Rows:
-* Columns:
-* 
+* Rows: 234
+* Columns: 11
 
 # What libraries were used?
 
@@ -55,5 +54,5 @@ I used 3 visualisations:
 | Plot Type  | X Axis Variable Type | Y Axis Variable Type | Plot Purpose |
 | ------------- | ------------- | ------------- | ------------- |
 | Box Plot  | categorical nominal  | numerical continuous  | To show which groups of cars have higher fuel efficiency |
-| Scatter Plot w/ regression line  | categorical nominal  | Content Cell  | Content Cell  |
-| Scatter Plot w/ colors  | categorical nominal  | Content Cell  | Content Cell  |
+| Scatter Plot w/ regression line  | numerical continuous  | numerical continuous  | To show if the variables have a positive or negative correlation and to see if one variable is always higher than the other through the geom_abline() comparison |
+| Scatter Plot w/ colors  | numerical continuous  | numerical continuous  | Added a categorical nominal variable to color code the points in the scatterplot to observe trends in the fuel efficiency of each car drive type |
