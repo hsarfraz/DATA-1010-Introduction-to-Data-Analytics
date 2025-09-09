@@ -6,12 +6,12 @@
 * ggplot package in the tidyverse library to create graphs
 * variable types (categorical nominal, categorical ordinal, numerical discrete, numerical continuous)
 * Dataset name: mpg dataset
-* Dataset Size:
+* Dataset Size: 234 rows and 11 columns
 * Any dataset cleaning: No
-* Outputs produced
-  * Box Plot
-  * Scatter Plot w/ regression line
-  * Scatter Plot w/ colors
+* Outputs produced (x-axis/independent variable & y-axis/dependent variable)
+  * Box Plot (categorical nominal & numerical continuous)
+  * Scatter Plot w/ regression line (numerical continuous & numerical continuous)
+  * Scatter Plot w/ colors (numerical continuous & numerical continuous) + categorical nominal variable for point color coding. But this variable is neither independent or dependent
 
 
 ## Week 2 [link]()
