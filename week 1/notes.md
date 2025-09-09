@@ -54,6 +54,6 @@ I used 3 visualisations:
 
 | Plot Type  | X Axis Variable Type | Y Axis Variable Type | Plot Purpose |
 | ------------- | ------------- | ------------- | ------------- |
-| Box Plot  | categorical nominal  | Content Cell  | Content Cell  |
+| Box Plot  | categorical nominal  | numerical continuous  | To show which groups of cars have higher fuel efficiency |
 | Scatter Plot w/ regression line  | categorical nominal  | Content Cell  | Content Cell  |
 | Scatter Plot w/ colors  | categorical nominal  | Content Cell  | Content Cell  |
