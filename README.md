@@ -9,9 +9,9 @@
 * Dataset Size: 234 rows and 11 columns
 * Any dataset cleaning: No
 * Outputs produced (x-axis/independent variable & y-axis/dependent variable)
-  * Box Plot (categorical nominal & numerical continuous)
-  * Scatter Plot w/ regression line (numerical continuous & numerical continuous)
-  * Scatter Plot w/ colors (numerical continuous & numerical continuous) + categorical nominal variable for point color coding. But this variable is neither independent or dependent
+  * **Box Plot** (categorical nominal & numerical continuous)
+  * **Scatter Plot w/ regression line** (numerical continuous & numerical continuous)
+  * **Scatter Plot w/ colors** (numerical continuous & numerical continuous) + categorical nominal variable for point color coding. But this variable is neither independent or dependent
 
 
 ## Week 2 [link]()
