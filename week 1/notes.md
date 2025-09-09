@@ -51,8 +51,8 @@ Tidyverse is a collection of R packages that data scientists commonly use in eve
 
 I used 3 visualisations:
 
-| Plot Type  | X Axis Variable Type | Y Axis Variable Type | Plot Purpose |
+| Plot Type  | X Axis Variable Type/Independent variable | Y Axis Variable Type/dependent variable | Plot Purpose |
 | ------------- | ------------- | ------------- | ------------- |
 | Box Plot  | categorical nominal  | numerical continuous  | To show which groups of cars have higher fuel efficiency |
 | Scatter Plot w/ regression line  | numerical continuous  | numerical continuous  | To show if the variables have a positive or negative correlation and to see if one variable is always higher than the other through the geom_abline() comparison |
-| Scatter Plot w/ colors  | numerical continuous  | numerical continuous  | Added a categorical nominal variable to color code the points in the scatterplot to observe trends in the fuel efficiency of each car drive type |
+| Scatter Plot w/ colors  | numerical continuous  | numerical continuous  | Added a categorical nominal variable "drv" (not a independent or dependent variable) to color code the points in the scatterplot to observe trends in the fuel efficiency of each car drive type |
