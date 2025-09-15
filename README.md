@@ -1,5 +1,15 @@
 # DATA-1010-Introduction-to-Data-Analytics
 
+## Overall Course Summary
+
+Number of..
+* Primary datasets analysed:
+* Secondary datasets analysed:
+* Boxplots analysed:
+* Scatterplots analysed:
+* Barcharts analysed:
+* Regression lines:
+
 ## Week 1 [link](https://github.com/hsarfraz/DATA-1010-Introduction-to-Data-Analytics/tree/main/week%201)
 
 * tidyverse library
