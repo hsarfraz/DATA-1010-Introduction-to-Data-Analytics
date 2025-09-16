@@ -4,11 +4,11 @@
 
 Number of..
 * Primary datasets analysed:
-* Secondary datasets analysed (pre-built datasets): 3
-* Boxplots analysed:
-* Scatterplots analysed:
+* Secondary datasets analysed (pre-built datasets): 1
+* Boxplots analysed: 1
+* Scatterplots analysed: 2
 * Barcharts analysed:
-* Regression lines:
+* Regression lines: 1
 
 ## Week 1 [link](https://github.com/hsarfraz/DATA-1010-Introduction-to-Data-Analytics/tree/main/week%201)
 
