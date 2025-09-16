@@ -4,7 +4,7 @@
 
 Number of..
 * Primary datasets analysed:
-* Secondary datasets analysed:
+* Secondary datasets analysed (pre-built datasets): 3
 * Boxplots analysed:
 * Scatterplots analysed:
 * Barcharts analysed:
