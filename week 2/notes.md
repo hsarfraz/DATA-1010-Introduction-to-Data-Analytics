@@ -1,8 +1,8 @@
 # General Dataset Info
 
-* About: This dataset provides fuel economy data from 1999 and 2008 for 38 popular models of cars.
-* Rows: 234
-* Columns: 11
+* About: On-time data for all flights that departed NYC (i.e. JFK, LGA or EWR) in 2013.
+* Rows: 336,776
+* Columns: 19
 
 # What libraries were used?
 
@@ -10,32 +10,27 @@
 
 Tidyverse is a collection of R packages that data scientists commonly use in everyday data analyses. It includes packages for data import ( readr ), data visualization ( ggplot2 ), data manipulation ( dplyr , tidyr ), functional programming ( purrr ), and model building ( tidymodels ) etc.
 
-# Variable Types
+<ins> nycflights13 </ins>
 
-<ins> categorical variables </ins>
-
-**categorical nominal**: A categorical variable that groups data into distinct categories that have no intrinsic order or rank.
-
-**categorical ordinal**: A categorical variable that groups data into distinct categories that have a order or rank.
-
-<ins> numerical variables </ins>
-
-**numerical discrete**: A number of possible measurements between two presumed points which have some sort of jump in between them
-
-**numerical continuous**: unspecified number of possible measurements between two presumed points
+The nycflights13 library contains many datasets related to flights that departed NYC in 2013. The library contains datasets which contains details on flight information, airlines, airplanes, airports, and weather. 
 
 # What are the key variables?
 
 [Here is a description of the dataset](https://rpubs.com/shailesh/mpg-exploration) from RPubs
 
+ [1]  "dep_time"       "sched_dep_time" "dep_delay"     
+ [7] "arr_time"       "sched_arr_time" "arr_delay"      "carrier"        "flight"         "tailnum"       
+[13] "origin"         "dest"           "air_time"       "distance"       "hour"           "minute"        
+[19] "time_hour"
+
 | Column Name  | Variable Type | Variable Description |
 | ------------- | ------------- | ------------- |
-| manufacturer  | categorical nominal  | Content Cell  |
-| model  | categorical nominal  | Content Cell  |
-| displ  | numeric continuous  | engine displacement in liters  |
-| year  | categorical ordinal  | year of manufacturing  |
-| cyl  | categorical ordinal  | number of cylinders  |
-| trans  | categorical nominal  | type of transmission  |
+| year  | categorical ordinal  | year of flight departure/arrival  |
+| month  | categorical ordinal  | month of flight departure/arrival  |
+| day  | categorical ordinal  | day of flight departure/arrival  |
+| dep_time  | NA  | NA  |
+| sched_dep_time  | NA  | NA  |
+| dep_delay  | NA  | NA  |
 | drv  | categorical nominal  | 	drive type  |
 | cty  | numeric continuous  | city mileage |
 | hwy  | numeric continuous  | highway mileage  |
