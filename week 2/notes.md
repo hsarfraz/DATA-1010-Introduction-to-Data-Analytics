@@ -18,8 +18,7 @@ The nycflights13 library contains many datasets related to flights that departed
 
 [Here is a description of the dataset](https://rpubs.com/shailesh/mpg-exploration) from RPubs
 
- [1]  "dep_time"       "sched_dep_time" "dep_delay"     
- [7] "arr_time"       "sched_arr_time" "arr_delay"      "carrier"        "flight"         "tailnum"       
+       "tailnum"       
 [13] "origin"         "dest"           "air_time"       "distance"       "hour"           "minute"        
 [19] "time_hour"
 
@@ -28,14 +27,14 @@ The nycflights13 library contains many datasets related to flights that departed
 | year  | categorical ordinal  | year of flight departure/arrival  |
 | month  | categorical ordinal  | month of flight departure/arrival  |
 | day  | categorical ordinal  | day of flight departure/arrival  |
-| dep_time  | NA  | NA  |
-| sched_dep_time  | NA  | NA  |
-| dep_delay  | NA  | NA  |
-| drv  | categorical nominal  | 	drive type  |
-| cty  | numeric continuous  | city mileage |
-| hwy  | numeric continuous  | highway mileage  |
-| fl  | categorical nominal  | fuel type  |
-| class  | categorical nominal  | vehicle class  |
+| dep_time  | numerical discrete  | time of flight departure  |
+| sched_dep_time  | numerical discrete  | scheduled flight departure  |
+| dep_delay  | numerical discrete  | departure delay in minutes  |
+| arr_time  | numerical discrete  | 	time of flight arrival  |
+| sched_arr_time  | numerical discrete  | scheduled arrival time|
+| arr_delay  | numerical discrete  | arrival delay in minutes  |
+| carrier  | categorical nominal  | abbreviated flight carrier name  |
+| flight  | NA  | NA  |
 
 # What business/social questions could be answered with this dataset?
 
