@@ -18,9 +18,6 @@ The nycflights13 library contains many datasets related to flights that departed
 
 [Here is a description of the dataset](https://rpubs.com/shailesh/mpg-exploration) from RPubs
 
-       "tailnum"       
-[13] "origin"         "dest"           "air_time"       "distance"       "hour"           "minute"        
-[19] "time_hour"
 
 | Column Name  | Variable Type | Variable Description |
 | ------------- | ------------- | ------------- |
@@ -34,7 +31,15 @@ The nycflights13 library contains many datasets related to flights that departed
 | sched_arr_time  | numerical discrete  | scheduled arrival time|
 | arr_delay  | numerical discrete  | arrival delay in minutes  |
 | carrier  | categorical nominal  | abbreviated flight carrier name  |
-| flight  | NA  | NA  |
+| flight  | numerical discrete  | flight number |
+| tailnum  | NA  | NA |
+| origin  | NA  | NA |
+| dest  | NA  | NA |
+| air_time  | NA  | NA |
+| distance  | NA  | NA |
+| hour  | NA  | NA |
+| minute  | NA  | NA |
+| time_hour  | NA  | NA |
 
 # What business/social questions could be answered with this dataset?
 
