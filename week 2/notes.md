@@ -31,15 +31,15 @@ The nycflights13 library contains many datasets related to flights that departed
 | sched_arr_time  | numerical discrete  | scheduled arrival time|
 | arr_delay  | numerical discrete  | arrival delay in minutes  |
 | carrier  | categorical nominal  | abbreviated flight carrier name  |
-| flight  | numerical discrete  | flight number |
-| tailnum  | NA  | NA |
-| origin  | NA  | NA |
-| dest  | NA  | NA |
-| air_time  | NA  | NA |
-| distance  | NA  | NA |
-| hour  | NA  | NA |
-| minute  | NA  | NA |
-| time_hour  | NA  | NA |
+| flight  | categorical nominal  | flight number |
+| tailnum  | categorical nominal  | tail number, a license plate of a plane |
+| origin  | categorical nominal  | origin city of flight |
+| dest  | categorical nominal  | destination city of flight |
+| air_time  | numerical discrete  | total flight time in minutes |
+| distance  | numerical discrete  | total flight distance |
+| hour  | numerical discrete  | scheduled hour departure of flight |
+| minute  | numerical discrete  | scheduled minute departure of flight |
+| time_hour  | datetime variable/numerical continuous   | departure of flight with date and time |
 
 # What business/social questions could be answered with this dataset?
 
