@@ -52,6 +52,6 @@ I used 3 visualisations:
 
 | Plot Type  | X Axis Variable Type/Independent variable | Y Axis Variable Type/dependent variable | Plot Purpose |
 | ------------- | ------------- | ------------- | ------------- |
-| scatter plot  | NA  | NA  | NA |
-| bar chart  | NA  | NA  | NA |
+| scatter plot  | numerical continuous  | numerical continuous  | to show the relationship between flight delays and flight cancellations |
+| bar chart  | categorical nominal  | numerical continuous  | to show which airline is most likley to have a departure delay more than 30 min |
 
