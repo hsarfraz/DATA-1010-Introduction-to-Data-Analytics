@@ -1,0 +1,113 @@
+---
+title: "SARFRAZ_HW1"
+author: "Hussain Sarfraz"
+date: "2025-09-22"
+output:
+  html_document:
+    toc: true
+    theme: united
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse) #load the tidyverse library first
+```
+
+## Dataset Exploration
+
+The `mpg` dataset provides fuel economy data from 1999 and 2008 for 38 popular models of cars.
+
+```{r}
+cat('number of rows:',nrow(mpg), #234
+   '\nnumber of columns:',ncol(mpg)) #11
+
+glimpse(mpg) #shows rows, columns, and snummary of all columns
+summary(mpg) #column names
+```
+
+
+### Description of columns
+
+[Here is a description of the dataset](https://rpubs.com/shailesh/mpg-exploration) from RPubs
+
+| Column Name  | Variable Type | Variable Description |
+| ------------- | ------------- | ------------- |
+| manufacturer  | categorical nominal  | Content Cell  |
+| model  | categorical nominal  | Content Cell  |
+| displ  | numeric continuous  | engine displacement in liters  |
+| year  | categorical ordinal  | year of manufacturing  |
+| cyl  | categorical ordinal  | number of cylinders  |
+| trans  | categorical nominal  | type of transmission  |
+| drv  | categorical nominal  | 	drive type  |
+| cty  | numeric continuous  | city mileage |
+| hwy  | numeric continuous  | highway mileage  |
+| fl  | categorical nominal  | fuel type  |
+| class  | categorical nominal  | vehicle class  |
+
+## Question 1 (relationship between cylinders and highway fuel efficiency)
+
+Investigate the relationship between the number of cylinders (`cyl`) and highway fuel efficiency. Look at the variables, and decide which type of plot (scatterplot, line plot, boxplot, or bar chart) best summarizes their relationship. Comment on that relationship. HINT: you may need to use the `as.factor(cyl)` syntax in the graph (as we did for year above).
+
+<ins> Answer </ins>
+
+A boxplot would be the best graph to display the relationship between the number of cylinders(cyl) and highway fuel efficiency(hwy). The reason for this is because cyl is a categorical nominal (or can also be seen as numerical discrete) x-variable while hwy is a continuous y-variable. 
+
+```{r}
+ggplot(data=mpg)+
+  geom_boxplot(mapping=aes(x=as.factor(cyl),y=hwy))+coord_flip()
+```
+
+From looking at the boxplot you can observe that cars with less cylinders have higher fuel efficiency since the median for the boxplot with 4 and 5 cylinders is approximately 28 miles per gallon. This result is way larger than the median milage shown for cars with 6 and 8 cylinders which is approximately 23 and 17 respectively. 
+
+I determined that cyl is a categorical nominal (or numerical discrete variable depending on how you look at it) because the number of cylinders can only be a whole number and cannot include decimals. Also, when I entered the command “mpg$cyl” in R the number of cylinders shows these four repeated values only: 4,5,6,8. The number of cylinders is only limited to four groups based on the results of displaying all the values. For this reason, I have said that cyl is a categorical/discrete variable. 
+
+I determined that hwy is a numerical continuous variable because highway miles (per gallon) can be presented as a decimal with an infinite value. I even typed the command “mpg$hwy” in R to see if my initial observations were correct and I saw that the values for highway fuel efficiency were not repeated like the values shown for the number of cylinders. There were many different values shown for hwy. These observations led me to say that hwy is a continuous variable 
+
+<ins> Additional Work </ins>
+
+```{r}
+mpg$cyl #Displayed all values of cyl and hwy to understand data better
+mpg$hwy
+```
+
+## Question 2 (`coord_fixed()` and `geom_abline()`)
+
+In section 3.9.1 of the textbook, solve problem #4 (on the relationship between city and highway fuel efficiency). What substantive conclusions can you draw about the relationship between these variables? 
+
+<ins> What does the scatter plot below tell you about the relationship between city and highway mpg? </ins>
+
+The plot tells us that the two variables have a positive linear correlation which means that as city mpg increases highway mpg increases as well. The reason why highway mpg is greater than city mpg is due to the fact that there are less stops in a highway whereas in a city a car’s fuel is used on frequent stops in the traffic light or rush hours. 
+
+<ins> Why is `coord_fixed()` important? </ins>
+
+`coord_fixed()` is important since it defines the aspect ratio of the line graph shown in problem #4. Adjusting a graphs aspect ratio helps with data visualization. The aspect ratio ensures that the x and y axis have a consistent ratio in a graph, no matter the size of the output window. In the example problem, the aspect ratio helped compress the data points and place the line at a specific angle so observations and conclusions can easily be seen and made.
+
+<ins > What does `geom_abline()` do? </ins>
+
+`geom_abline()` creates a line which has a slope of 1. It is different from the regression line which is used to show whether two variables are correlated.  Since geom_abline() has a slope of 1 it represents a scenario where city mpg and highway mpg are the same. This is because if city mph is 1 then the highway mpg will be 1 as well. Both values would be the same. 
+
+The regression line lies consistently above the equality line, showing that highway mpg is always greater than city mpg. On average, cars get about 5–10 mpg more on highways than in cities. This makes sense, as cars generally achieve better fuel efficiency at steady highway speeds compared to stop-and-go city driving.
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
+  geom_point() + 
+  geom_abline() +
+  coord_fixed() +
+  geom_smooth()   # I added geom_smooth() to plot the regression line and see the correlation between the two variables
+```
+
+## Question 3 (car displacement and highway mpg)
+
+Look at how the type of drivetrain influences fuel economy (`drv`). For a given engine size (`displ`), in general, do four-wheel drive, front wheel drive, or rear wheel drive engines have the highest fuel economy? 
+
+<ins> Answer </ins>
+
+Front wheel drives have the highest fuel economy since the scatterplot in figure 5 shows that majority of the front wheel drivetrains are in the upper left-hand corner (green points in graph). Also, the front wheel drivetrains have a small engine size which reveals that cars with a small engine size have greater fuel efficiency. 
+
+There are some four-wheel drivetrains (red points in graph) that do mix with the green points, but majority of the red points are in the lower right-hand corner of the graph. This means that there are some four-wheel drivetrains that have a high fuel economy, but majority of the four-wheel drivetrains do not have a high fuel economy. 
+
+```{r}
+ggplot(data=mpg, aes(x=displ,y=hwy,color=drv))+
+  geom_point() + 
+  geom_smooth()
+```
