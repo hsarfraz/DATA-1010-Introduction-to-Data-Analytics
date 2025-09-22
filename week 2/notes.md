@@ -16,9 +16,6 @@ The nycflights13 library contains many datasets related to flights that departed
 
 # What are the key variables?
 
-[Here is a description of the dataset](https://rpubs.com/shailesh/mpg-exploration) from RPubs
-
-
 | Column Name  | Variable Type | Variable Description |
 | ------------- | ------------- | ------------- |
 | year  | categorical ordinal  | year of flight departure/arrival  |
