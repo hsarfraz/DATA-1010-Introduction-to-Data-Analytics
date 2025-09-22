@@ -12,6 +12,8 @@ Number of..
 
 ## Week 1 [link](https://github.com/hsarfraz/DATA-1010-Introduction-to-Data-Analytics/tree/main/week%201)
 
+[Here is a link to my published homework on RPubs](http://rpubs.com/hsarfraz76/1347104)
+
 * tidyverse library
 * ggplot package in the tidyverse library to create graphs
 * variable types (categorical nominal, categorical ordinal, numerical discrete, numerical continuous)
