@@ -41,11 +41,6 @@ The nycflights13 library contains many datasets related to flights that departed
 | minute  | numerical discrete  | scheduled minute departure of flight |
 | time_hour  | datetime variable/numerical continuous   | departure of flight with date and time |
 
-# What business/social questions could be answered with this dataset?
-
-* Is there a link between car performance and a car's manufacturer?
-* Is there a link between the number of car cylinders and car displacement?
-
 # What summary stats or visualizations would give insight?
 
 I used 2 visualisations:
