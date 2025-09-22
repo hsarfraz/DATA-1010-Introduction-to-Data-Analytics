@@ -55,6 +55,3 @@ Number of..
 
 ## Week 8 [link]()
 
-## Week 9 [link]()
-
-## Week 10 [link]()
