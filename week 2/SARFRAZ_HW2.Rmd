@@ -1,0 +1,292 @@
+---
+title: "SARFRAZ_HW2"
+author: "Hussain Sarfraz"
+date: "2025-09-22"
+output:
+  html_document:
+    toc: true
+    theme: united
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(nycflights13)
+library(tidyverse)
+library(Lahman)
+```
+
+## Dataset Exploration
+
+The flights dataset provides on-time data for all flights that departed NYC (i.e. JFK, LGA or EWR) in 2013.
+
+
+```{r}
+cat('number of rows:',nrow(flights), #336776 
+   '\nnumber of columns:',ncol(flights)) #19
+
+glimpse(flights) #shows rows, columns, and snummary of all columns
+summary(flights) #column names
+```
+
+### Description of columns
+
+| Column Name  | Variable Type | Variable Description |
+| ------------- | ------------- | ------------- |
+| year  | categorical ordinal  | year of flight departure/arrival  |
+| month  | categorical ordinal  | month of flight departure/arrival  |
+| day  | categorical ordinal  | day of flight departure/arrival  |
+| dep_time  | numerical discrete  | time of flight departure  |
+| sched_dep_time  | numerical discrete  | scheduled flight departure  |
+| dep_delay  | numerical discrete  | departure delay in minutes  |
+| arr_time  | numerical discrete  | 	time of flight arrival  |
+| sched_arr_time  | numerical discrete  | scheduled arrival time|
+| arr_delay  | numerical discrete  | arrival delay in minutes  |
+| carrier  | categorical nominal  | abbreviated flight carrier name  |
+| flight  | categorical nominal  | flight number |
+| tailnum  | categorical nominal  | tail number, a license plate of a plane |
+| origin  | categorical nominal  | origin city of flight |
+| dest  | categorical nominal  | destination city of flight |
+| air_time  | numerical discrete  | total flight time in minutes |
+| distance  | numerical discrete  | total flight distance |
+| hour  | numerical discrete  | scheduled hour departure of flight |
+| minute  | numerical discrete  | scheduled minute departure of flight |
+| time_hour  | datetime variable/numerical continuous   | departure of flight with date and time |
+
+## Question 1 (dataset filtering)
+
+In the code above, we frequently used not_cancelled, rather than flights as our data. How did this simplify our code? Think especially about the functions we used within `summarise()`.
+
+<ins> Answer </ins>
+
+The object ‘not_cancelled’ is an object that contains a dataset which has a list of flights that have not been cancelled and have taken off. 
+
+One might think about using the `group_by()` function to filter out the delayed flights. This could work but, there are multiple variables that need to be sub-grouped within the ‘non_cancelled’ dataset. Because of this it would be easier to create an object that stores all the data for non-cancelled flights (in this example, this is the non_cancelled object). 
+
+Also, the `mean()` function was used within the `summarize()` function to calculate the mean of delayed flights per day. The mean for the delayed flights was computed based off the groups per day (these groups were created in the group_by() function). If the flight delay variables (dep_delay() and arr_delay() ) were used in the group_by() function along with the year, month, and day then R would get confused since it would try to create 2 groups at the same time (one group for each day and another group for delay times). Our objective is to find the average delayed flights per day so it makes sense to only include the year, month, and day variables in the group_by() function and no other variables.
+
+
+```{r}
+# Here is the object 'not_cancelled' being created
+not_cancelled <- flights %>% 
+  filter(!is.na(dep_delay), !is.na(arr_delay)) # filtering delayed flights because we want to see non-cancelled flights
+
+# Showing average delays. avg_delay2 shows average for delayed flights only
+not_cancelled %>% 
+  group_by(.,year, month, day) %>% 
+  summarize(.,
+            avg_delay1 = mean(arr_delay),
+            avg_delay2 = mean(arr_delay[arr_delay > 0]) # the ave positive delay
+  )
+```
+
+## Question 2 (scatterplot of flight delays and flight cancellation proportion)
+
+You might suspect that there is a relationship between the average delay (on a given day) and the proportion of flights that are cancelled on that day. For example, if there is bad weather, many flights might start off delayed, but then end up cancelled. Let’s test this intuition. First, find the average delay and proportion of flights cancelled each day. Second, plot them against one another and comment on the relationship. Did our intuition hold? 
+
+<ins> Answer </ins>
+
+Flights that have longer delays have a higher chance of getting cancelled. This can be seen in the scatter plot below which shows that as a flights average delay time increases, then the proportion/percentage of the flight being cancelled increases. I reached this answer by finding the average delay and proportion of flights cancelled. I then used `geom_point()` to plot the data points and to see a relationship. 
+
+**NOTE**: I used the ‘dep_delay’ variable to calculate the average flights delay because if a flight is cancelled it would not have a arrival delay so using the variable ‘arr_delay’ to calculate the flight delay average would not be useful.
+
+
+```{r}
+#avg delays and proportion of flights cancelled
+
+flights %>%
+  group_by(.,year, month, day) %>% 
+  mutate(cancelled = ifelse((is.na(dep_delay) & is.na(arr_delay)),1,0)) %>%
+  summarize(.,
+            avg_delay1 = mean(dep_delay,na.rm=TRUE),
+            flights_proportion = 100*mean(cancelled)) %>%
+  filter(flights_proportion < 10) %>%
+  ggplot(mapping = aes(x = avg_delay1, y = flights_proportion)) + 
+  geom_point(alpha=1/10)
+```
+
+In the scatter plot above I used the `filter()` function to remove some extreme outliers of data that I saw. I didn’t want those points to mess up my observations which is why I added the filter function. 
+This is what the graph looked like without the filter function.
+
+
+```{r}
+flights %>%
+  group_by(.,year, month, day) %>% 
+  mutate(cancelled = ifelse((is.na(dep_delay) & is.na(arr_delay)),1,0)) %>%
+  summarize(.,
+            avg_delay1 = mean(dep_delay,na.rm=TRUE),
+            flights_proportion = 100*mean(cancelled)) %>%
+  ggplot(mapping = aes(x = avg_delay1, y = flights_proportion)) + 
+  geom_point(alpha=1/10)
+```
+
+## Question 3 (scatterplot of flight departure hour and on time flights)
+
+No one likes to be delayed when flying. To try and avoid this, you might wonder what hour of the day is least likely to have a departure delay. What hour is it? Also, compute the percentage of flights that leave on time or early in each hour (i.e., the flights you want to find!). What hour of the day are you most likely to find these flights?
+
+<ins> Answer </ins>
+
+Flights that have the least delays would occur around 6-7 A.M. and I reached this conclusion from the data points that I plotted in the scatter plot below. I used this code in R to reach this conclusion and to make the graph.
+
+I used the ‘not_cancelled’ object because it only has the dataset for non-cancelled flights. This way, I do not need to worry about any blank (NA) values that appear when I am filtering the data further. 
+
+I then used the `mutate()` function to add a column that converted the occurrence of early flights and late flights on a 1-0 scale (this would be helpful when finding the proportion of early flights). I used the `ifelse()` function to find flights that arrived early on time. I did this by setting the condition (dep_delay <= 0) to pull out the negative dep_delay values (the negative values represent an early departure). 
+
+The `summarize()` function was used to calculate the proportion of early flight occurrences for each hour group that I made in the `group_by()` function. 
+
+I then created another variable called ‘ontime_proportion’ to get the percentage of the early flight occurrences and displayed this in the table below as the y-axis.
+
+**NOTE**: since the question only asked for departure delays, I only used the dep_delay variable and not the arr_delay variable
+
+
+```{r}
+# code for scatterplot of early flight proportion for each hour
+
+not_cancelled %>%
+  group_by(.,hour) %>%
+  mutate(flight_early = ifelse((dep_delay <= 0),1,0)) %>%
+  summarize(.,
+            ontime_proportion = 100*mean(flight_early)) %>%
+  ggplot(mapping = aes(x = hour, y = ontime_proportion)) + 
+  geom_point()
+```
+
+## Question 4 (airline carriers and their departure delay proportion)
+
+Which carriers are most likely to have a departure delay of at least 30 minutes? Hint: using the ifelse() function may be helpful
+
+<ins> Answer </ins>
+
+ExpressJet (EV) is the airline that will most likely have a departure delay for 30 minutes or more with a proportion of roughly 26%. Mesa Airlines (YV) comes in second with a proportion of roughly 23%. I reached this conclusion from the scatterplot in figure 9. I used the code below to reach this conclusion. I also displayed this data in a boxplot to display the data in another format visualization. 
+
+I used the ‘not_cancelled’ object because it only has the dataset for non-cancelled flights. This way, I do not need to worry about any blank (NA) values that appear when I am filtering the data further. 
+
+I then used the `mutate()` function to add a column that converted the flights that occurred 30 minutes or late on a 1-0 scale (this would be helpful when finding the proportion of 30+ minute late flights). I used the ifelse() function to find flights that arrived 30 or 30+ minutes late. I did this by setting the condition (dep_delay >= 0) to pull out the 30 or 30+ departure delay values. 
+
+The `summarize()` function was used to calculate the proportion of 30 or 30+ departure delay occurrences for each carrier group that I made in the group_by() function. 
+I then created another variable called ‘f_30minlate_proportion’ to get the percentage of the 30 or 30+ flight delay occurrences and displayed this in the table below as the y-axis.
+NOTE: since the question only asked for departure delays, I only used the dep_delay variable and not the arr_delay variable
+
+
+```{r}
+# code for scatterplot of 30 min late flight proportion sorted by each carrier
+
+not_cancelled %>%
+  group_by(.,carrier) %>%
+  mutate(flight_30minlate = ifelse((dep_delay >= 30),1,0)) %>%
+  summarize(.,
+            f_30minlate_proportion = 100*mean(flight_30minlate)) %>%
+  ggplot(mapping = aes(x = carrier, y = f_30minlate_proportion)) + 
+  geom_point()
+
+# A bar chart of 30 min late flight proportion, sorted by each carrier 
+not_cancelled %>%
+  group_by(.,carrier) %>%
+  mutate(flight_30minlate = ifelse((dep_delay >= 30),1,0)) %>%
+  summarize(.,
+            f_30minlate_proportion = 100*mean(flight_30minlate)) %>%
+  ggplot(mapping = aes(x = carrier, y = f_30minlate_proportion)) + 
+  geom_bar(stat='identity')
+```
+
+## Question 5 (city destination and the average flight delay in that location)
+
+What destination has the smallest average arrival delay?
+
+<ins> Answer </ins>
+
+Lexington (LEX) has the smallest average arrival delay with an average of -22.  I got this answer from the code I wrote which I talk about further below.
+
+For the code I wrote, I grouped everything by destination since the question wanted the lowest average arrival delay for each destination. I then got the mean for all arrival delays for each destination through the `summarize()` function. I stored that value in the variable ‘arrivaldelay_average’.
+
+**NOTE**: since the question only asked for arrival delays, I only used the ‘arr_delay’ variable and not the ‘dep_delay’ variable
+
+
+```{r}
+# The code I had first. I noticed the graph was too big so I added 
+# the filter function to get the value of the smallest average
+not_cancelled %>%
+  group_by(.,dest) %>%
+  summarize(.,
+            arrivaldelay_average = mean(arr_delay)) %>%
+  ggplot(mapping = aes(x = dest, y = arrivaldelay_average)) + 
+  geom_point()
+
+# The code that displays the smallest average of arrivals
+# and the destination that this value came from
+
+not_cancelled %>%
+  group_by(.,dest) %>%
+  summarize(.,
+            arrivaldelay_average = mean(arr_delay)) %>%
+  filter(arrivaldelay_average < -20) %>%
+  ggplot(mapping = aes(x = dest, y = arrivaldelay_average)) + 
+  geom_point()
+```
+
+## Question 6 (Bonus)
+
+BONUS: Load the Lahman() library, which contains data on baseball players and their batting averages. First, convert it to a tibble (the tidyverse data structure we’ll cover in a future lecture) by calling: batting <- as_tibble(Lahman::Batting). Remember that with a built-in R data like Batting, you can write ?Batting in the R Console to display the help file, which will explain what the variables mean.
+
+### Dataset Exploration
+
+The Batting dataset comes from the Lahman Baseball Database and is used for baseball statistics in R, providing comprehensive batting data and other tables from Major League Baseball.
+
+```{r}
+Batting <- as_tibble(Lahman::Batting)
+
+cat('number of rows:',nrow(Batting), #115450  
+   '\nnumber of columns:',ncol(Batting)) #22
+
+glimpse(Batting) #shows rows, columns, and snummary of all columns
+summary(Batting) #column names
+```
+
+### Question 6A (players and their batting averages)
+
+Then find the players with the best or worst batting averages (batting average is simply the number of hits a player has, divided by the number of at bats they have). Why would this lead you astray? 
+
+<ins> Answer </ins>
+
+When graphing this data, it would be impossible to see which players have the best and worst batting averages for 2 main reasons:
+
+1. There are many players who have perfect batting averages (they only hit one or two times) and this value is skewing our data. 
+2. There would be many players in the x-axis so it would be hard to see the name of all players. This can easily be fixed by adding a filter function to only show the graph of the best and worst players.
+
+I used the `group_by()` function to separate each player through their ID. This way I can calculate the batting average for each player. I then use the summarize function to define a variable ‘batting_average’ which gets the number of hits a player has (H) and divides that by the number of bates they have (AB). 
+
+Since the variable ‘player ID’ is a categorical variable and ‘batting_average’ is a continuous variable, I am using a scatter plot to display my data. 
+
+```{r}
+# players with best and worst averages
+
+Batting %>%
+  group_by(., playerID) %>%
+  summarize(.,
+            batting_average = sum(H)/sum(AB)) %>%
+  ggplot(mapping = aes(x = playerID, y = batting_average)) + 
+  geom_point()
+```
+
+### Question 6B (filtering players with larger bats and no perfect averages)
+
+In the 'Batting' dataset, there were players who only batted once or twice, and got a hit each time (or never hit at all), so their perfect averages are skewing our data. We want to filter players with larger at-bat sample sizes, so we can see true averages that give us more information. Now I can see some points in my scatterplot, although it is still filled, I can see more points clearly. 
+
+Now condition on players who had at least 500 at bats. How would you answer change? 
+
+<ins> Answer </ins>
+
+In our dataset, there were players who only batted once or twice, and got a hit each time (or never hit at all), so their perfect averages are skewing our data. We want to filter players with larger at-bat sample sizes, so we can see true averages that give us more information. Now I can see some points in my scatterplot, although it is still filled, I can see more points clearly. 
+
+```{r}
+# players with at least 500 at bats
+
+Batting %>%
+  group_by(.,playerID) %>%
+  filter(AB >= 500) %>%
+  summarize(.,
+            batting_average = H/AB) %>%
+  ggplot(mapping = aes(x = playerID, y = batting_average)) + 
+  geom_point()
+```
+
+
