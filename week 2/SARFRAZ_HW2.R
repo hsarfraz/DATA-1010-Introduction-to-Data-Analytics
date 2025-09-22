@@ -11,8 +11,8 @@
 library(nycflights13)
 library(tidyverse)
 ?flights
-nrow(flights)
-ncol(flights)
+nrow(flights) #336776
+ncol(flights) #19
 colnames(flights)
 summary(flights)
 View(flights)
@@ -153,4 +153,5 @@ Batting %>%
   summarize(.,
             batting_average = H/AB) %>%
   ggplot(mapping = aes(x = playerID, y = batting_average)) + 
+
   geom_point()
