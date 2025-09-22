@@ -48,7 +48,7 @@ The nycflights13 library contains many datasets related to flights that departed
 
 # What summary stats or visualizations would give insight?
 
-I used 3 visualisations:
+I used 2 visualisations:
 
 | Plot Type  | X Axis Variable Type/Independent variable | Y Axis Variable Type/dependent variable | Plot Purpose |
 | ------------- | ------------- | ------------- | ------------- |
