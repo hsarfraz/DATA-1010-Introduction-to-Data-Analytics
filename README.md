@@ -6,7 +6,7 @@ Number of..
 * Primary datasets analysed:
 * Secondary datasets analysed (pre-built datasets): 1
 * Boxplots analysed: 1
-* Scatterplots analysed: 3
+* Scatterplots analysed: 4
 * Barcharts analysed: 1
 * Regression lines: 1
 
@@ -36,6 +36,7 @@ Number of..
 * Any dataset cleaning: No (just filtering)
 * Outputs produced (x-axis/independent variable & y-axis/dependent variable)
   * **Scatter Plot** (numerical continuous & numerical continuous)
+  * **Scatter Plot** (categorical ordinal & numerical continuous)
   * **Bar chart** (categorical nominal & numerical continuous) 
 
 ## Week 3 [link]()
