@@ -1,5 +1,7 @@
 # DATA-1010-Introduction-to-Data-Analytics
 
+## [Link to my RPubs profile with all my visualisations and analysis](https://rpubs.com/hsarfraz76)
+
 ## Overall Course Summary
 
 Number of..
