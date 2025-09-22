@@ -28,6 +28,8 @@ Number of..
 
 ## Week 2 -[github page link](https://github.com/hsarfraz/DATA-1010-Introduction-to-Data-Analytics/tree/main/week%202)
 
+[Here is a link to my published homework on RPubs](https://rpubs.com/hsarfraz76/1347160)
+
 * week 1 libraries + nycflights13 library
 * ggplot package in the tidyverse library to create graphs
 * variable types (categorical nominal, categorical ordinal, numerical discrete, numerical continuous)
