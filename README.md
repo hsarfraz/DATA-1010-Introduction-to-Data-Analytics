@@ -43,7 +43,7 @@ Number of..
   * **Scatter Plot** (categorical ordinal & numerical continuous)
   * **Bar chart** (categorical nominal & numerical continuous) 
 
-## Week 3 [link]()
+## Week 3 [github page link](https://github.com/hsarfraz/DATA-1010-Introduction-to-Data-Analytics/blob/main/week%203/notes.md)
 
 * week 1,2 libraries + scales library
 * using the diamond dataset which is in the ggplot package from the tidyverse library
