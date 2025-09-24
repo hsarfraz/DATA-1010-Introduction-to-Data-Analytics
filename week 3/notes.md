@@ -43,6 +43,7 @@ I used 2 visualisations:
 | ------------- | ------------- | ------------- | ------------- |
 | scatter plot with colors  | numerical continuous  | numerical continuous  | Added a categorical ordinal variable to color code the points ro observe the trends with diamond weight and price along while simontaneously the relationship that diamond cut, color, and clarity have with price and weight. The categorical orginal variable is neither independent or dependent. It will be considered a independent explanatory variable if we were to use this variable in a regression analysis. Since we are currently just graphing we don't categorize this variable as a independent explanatory variable |
 | scatter plot with regression line  | numerical discrete | numerical continuous  | see the relationship between the number of flights reported and the change in average flight delay with more flights |
+| bubble plot  | categorical ordinal | categorical ordinal  | see the count of different diamonds/items in the dataset |
 
 
 
