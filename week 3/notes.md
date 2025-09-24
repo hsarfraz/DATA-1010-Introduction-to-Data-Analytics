@@ -20,27 +20,20 @@ The scales library in R provides a set of tools for controlling the appearance o
 
 # What are the key variables?
 
+[Description of this dataset on RPubs](https://rpubs.com/Davo2812/1102821)
+
 | Column Name  | Variable Type | Variable Description |
 | ------------- | ------------- | ------------- |
-| year  | categorical ordinal  | year of flight departure/arrival  |
-| month  | categorical ordinal  | month of flight departure/arrival  |
-| day  | categorical ordinal  | day of flight departure/arrival  |
-| dep_time  | numerical discrete  | time of flight departure  |
-| sched_dep_time  | numerical discrete  | scheduled flight departure  |
-| dep_delay  | numerical discrete  | departure delay in minutes  |
-| arr_time  | numerical discrete  | 	time of flight arrival  |
-| sched_arr_time  | numerical discrete  | scheduled arrival time|
-| arr_delay  | numerical discrete  | arrival delay in minutes  |
-| carrier  | categorical nominal  | abbreviated flight carrier name  |
-| flight  | categorical nominal  | flight number |
-| tailnum  | categorical nominal  | tail number, a license plate of a plane |
-| origin  | categorical nominal  | origin city of flight |
-| dest  | categorical nominal  | destination city of flight |
-| air_time  | numerical discrete  | total flight time in minutes |
-| distance  | numerical discrete  | total flight distance |
-| hour  | numerical discrete  | scheduled hour departure of flight |
-| minute  | numerical discrete  | scheduled minute departure of flight |
-| time_hour  | datetime variable/numerical continuous   | departure of flight with date and time |
+| carat  | categorical ordinal  | year of flight departure/arrival  |
+| cut  | categorical ordinal  | month of flight departure/arrival  |
+| color  | categorical ordinal  | day of flight departure/arrival  |
+| clarity  | numerical discrete  | time of flight departure  |
+| depth  | numerical discrete  | scheduled flight departure  |
+| table  | numerical discrete  | departure delay in minutes  |
+| price  | numerical discrete  | 	time of flight arrival  |
+| x  | numerical discrete  | scheduled arrival time|
+| y  | numerical discrete  | arrival delay in minutes  |
+| z  | categorical nominal  | abbreviated flight carrier name  |
 
 # What summary stats or visualizations would give insight?
 
