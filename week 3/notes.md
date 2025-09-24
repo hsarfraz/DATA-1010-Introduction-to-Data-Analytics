@@ -28,7 +28,7 @@ The scales library in R provides a set of tools for controlling the appearance o
 | cut  | categorical ordinal  | The diamonds quality in terms of its proportions, symmetry, and polish, which determine how well it interacts with light to produce brilliance and sparkle  |
 | color  | categorical nominal  | A diamonds hue, from colorless to yellow, gray, brown and nearly every shade of the rainbow  |
 | clarity  | categorical ordinal  | A diamond's internal characteristics, or inclusions, and surface imperfections, or blemishes, under 10-power magnification  |
-| depth  | numerical continuous  |  vertical measurement from the top table to the pointed culet at the bottom  |
+| depth  | numerical continuous  |  vertical measurement from the top table to the pointed culet at the bottom. shown as a percentage  |
 | table  | numerical continuous  | The diamond's flat, top facet which is clearly visible when viewed from above. The ideal table percentage varies by shape  |
 | price  | numerical discrete  | 	price of diamond  |
 | x  | numerical continuous  | diamond length |
