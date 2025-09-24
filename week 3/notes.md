@@ -26,7 +26,7 @@ The scales library in R provides a set of tools for controlling the appearance o
 | ------------- | ------------- | ------------- |
 | carat  | numerical continuous  | diamond carat (aka the unit of measurment which indicates the diamond's weight)  |
 | cut  | categorical ordinal  | The diamonds quality in terms of its proportions, symmetry, and polish, which determine how well it interacts with light to produce brilliance and sparkle  |
-| color  | categorical nominal  | A diamonds hue, from colorless to yellow, gray, brown and nearly every shade of the rainbow  |
+| color  | categorical ordinal  | A diamonds hue, from colorless to yellow, gray, brown and nearly every shade of the rainbow  |
 | clarity  | categorical ordinal  | A diamond's internal characteristics, or inclusions, and surface imperfections, or blemishes, under 10-power magnification  |
 | depth  | numerical continuous  |  vertical measurement from the top table to the pointed culet at the bottom. shown as a percentage  |
 | table  | numerical continuous  | The diamond's flat, top facet which is clearly visible when viewed from above. The ideal table percentage varies by shape  |
@@ -41,8 +41,8 @@ I used 2 visualisations:
 
 | Plot Type  | X Axis Variable Type/Independent variable | Y Axis Variable Type/dependent variable | Plot Purpose |
 | ------------- | ------------- | ------------- | ------------- |
-| scatter plot  | numerical continuous  | numerical continuous  | to show the relationship between flight delays and flight cancellations |
-| scatter plot  | categorical ordinal | numerical continuous  | to what hour of the day will a flight most likley departure early or on time |
-| bar chart  | categorical nominal  | numerical continuous  | to show which airline is most likley to have a departure delay more than 30 min |
+| scatter plot with colors  | numerical continuous  | numerical continuous  | Added a categorical ordinal variable to color code the points ro observe the trends with diamond weight and price along while simontaneously the relationship that diamond cut, color, and clarity have with price and weight. The categorical orginal variable is neither independent or dependent. |
+| scatter plot with regression line  | numerical discrete | numerical continuous  | see the relationship between the number of flights reported and the change in average flight delay with more flights |
+
 
 
