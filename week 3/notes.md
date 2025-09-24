@@ -1,8 +1,8 @@
 # General Dataset Info
 
-* About: On-time data for all flights that departed NYC (i.e. JFK, LGA or EWR) in 2013.
-* Rows: 336,776
-* Columns: 19
+* About: Contains measurements on 10 different variables (like price, color, clarity, etc.) for 53,940 different diamonds.
+* Rows: 53,940
+* Columns: 10
 
 # What libraries were used?
 
@@ -13,6 +13,10 @@ Tidyverse is a collection of R packages that data scientists commonly use in eve
 <ins> nycflights13 </ins>
 
 The nycflights13 library contains many datasets related to flights that departed NYC in 2013. The library contains datasets which contains details on flight information, airlines, airplanes, airports, and weather. 
+
+<ins> scales </ins>
+
+The scales library in R provides a set of tools for controlling the appearance of scales in visualizations, particularly within the ggplot2 framework
 
 # What are the key variables?
 
