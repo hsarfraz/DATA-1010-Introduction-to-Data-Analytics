@@ -45,6 +45,14 @@ Number of..
 
 ## Week 3 [link]()
 
+* week 1,2 libraries + scales library
+* using the diamond dataset which is in the ggplot package from the tidyverse library
+* variable types (categorical nominal, categorical ordinal, numerical discrete, numerical continuous)
+* Dataset name: diamonds dataset
+* Dataset Size: 53,940 rows and 10 columns
+* Any dataset cleaning: No (just filtering and visualisations)
+* Outputs produced (x-axis/independent variable & y-axis/dependent variable)
+
 ## Week 4 [link]()
 
 ## Week 5 [link]()
