@@ -23,9 +23,9 @@ Number of..
 * Dataset Size: 234 rows and 11 columns
 * Any dataset cleaning: No
 * Outputs produced (x-axis/independent variable & y-axis/dependent variable)
-  * **Box Plot** (categorical nominal & numerical continuous)
+  * **Box Plot** (categorical nominal & numerical continuous) 
   * **Scatter Plot w/ regression line** (numerical continuous & numerical continuous)
-  * **Scatter Plot w/ colors** (numerical continuous & numerical continuous) + categorical nominal variable for point color coding. But this variable is neither independent or dependent
+  * **Scatter Plot w/ colors** (numerical continuous & numerical continuous) + categorical nominal variable for point color coding. But this variable is neither independent or dependent since we are just plotting variables and are not using a regression analysis
 
 
 ## Week 2 -[github page link](https://github.com/hsarfraz/DATA-1010-Introduction-to-Data-Analytics/tree/main/week%202)
@@ -52,6 +52,8 @@ Number of..
 * Dataset Size: 53,940 rows and 10 columns
 * Any dataset cleaning: No (just filtering and visualisations)
 * Outputs produced (x-axis/independent variable & y-axis/dependent variable)
+  * **Scatter Plot w/ colors** (numerical continuous & numerical continuous) + categorical nominal variable for point color coding. But this variable is neither independent or dependent since we are just plotting variables and are not using a regression analysis
+  * **Scatter Plot w/ regression line** (numerical discrete & numerical continuous) 
 
 ## Week 4 [link]()
 
