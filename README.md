@@ -11,6 +11,7 @@ Number of..
 * Scatterplots analysed: 6
 * Barcharts analysed: 1
 * Regression lines: 2
+* Bubble plot: 1
 
 ## Week 1 -[github page link](https://github.com/hsarfraz/DATA-1010-Introduction-to-Data-Analytics/tree/main/week%201)
 
@@ -53,7 +54,8 @@ Number of..
 * Any dataset cleaning: No (just filtering and visualisations)
 * Outputs produced (x-axis/independent variable & y-axis/dependent variable)
   * **Scatter Plot w/ colors** (numerical continuous & numerical continuous) + categorical nominal variable for point color coding. But this variable is neither independent or dependent since we are just plotting variables and are not using a regression analysis
-  * **Scatter Plot w/ regression line** (numerical discrete & numerical continuous) 
+  * **Scatter Plot w/ regression line** (numerical discrete & numerical continuous)
+  * **Bubble Plot**: (categorical ordinal & categorical ordinal)
 
 ## Week 4 [link]()
 
