@@ -24,16 +24,16 @@ The scales library in R provides a set of tools for controlling the appearance o
 
 | Column Name  | Variable Type | Variable Description |
 | ------------- | ------------- | ------------- |
-| carat  | categorical ordinal  | year of flight departure/arrival  |
-| cut  | categorical ordinal  | month of flight departure/arrival  |
-| color  | categorical ordinal  | day of flight departure/arrival  |
-| clarity  | numerical discrete  | time of flight departure  |
-| depth  | numerical discrete  | scheduled flight departure  |
-| table  | numerical discrete  | departure delay in minutes  |
-| price  | numerical discrete  | 	time of flight arrival  |
-| x  | numerical discrete  | scheduled arrival time|
-| y  | numerical discrete  | arrival delay in minutes  |
-| z  | categorical nominal  | abbreviated flight carrier name  |
+| carat  | numerical continuous  | diamond carat (aka the unit of measurment which indicates the diamond's weight)  |
+| cut  | categorical ordinal  | The diamonds quality in terms of its proportions, symmetry, and polish, which determine how well it interacts with light to produce brilliance and sparkle  |
+| color  | categorical nominal  | A diamonds hue, from colorless to yellow, gray, brown and nearly every shade of the rainbow  |
+| clarity  | categorical ordinal  | A diamond's internal characteristics, or inclusions, and surface imperfections, or blemishes, under 10-power magnification  |
+| depth  | numerical continuous  |  vertical measurement from the top table to the pointed culet at the bottom  |
+| table  | numerical continuous  | The diamond's flat, top facet which is clearly visible when viewed from above. The ideal table percentage varies by shape  |
+| price  | numerical discrete  | 	price of diamond  |
+| x  | numerical continuous  | diamond length |
+| y  | numerical continuous  | diamond width  |
+| z  | numerical continuous  | diamond depth  |
 
 # What summary stats or visualizations would give insight?
 
