@@ -7,11 +7,12 @@
 Number of..
 * Primary datasets analysed:
 * Secondary datasets analysed (pre-built datasets): 1
-* Boxplots analysed: 1
+* Boxplots analysed: 3
 * Scatterplots analysed: 6
 * Barcharts analysed: 1
 * Regression lines: 2
-* Bubble plot: 1
+* Bubble plot: 2
+* Heatmap: 2
 
 ## Week 1 -[github page link](https://github.com/hsarfraz/DATA-1010-Introduction-to-Data-Analytics/tree/main/week%201)
 
@@ -56,6 +57,7 @@ Number of..
   * **Scatter Plot w/ colors** (numerical continuous & numerical continuous) + categorical nominal variable for point color coding. But this variable is neither independent or dependent since we are just plotting variables and are not using a regression analysis
   * **Scatter Plot w/ regression line** (numerical discrete & numerical continuous)
   * **Bubble Plot**: (categorical ordinal & categorical ordinal)
+   * **Heat map**: (categorical ordinal & categorical ordinal)
 
 ## Week 4 [link]()
 
