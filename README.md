@@ -4,7 +4,7 @@
 
 ## Overall Course Summary
 
-[Here is a link](https://rpubs.com/hsarfraz76/1349752) to my RPubs page where I summarize all of the key statistical consepts that I have learned in this course.
+[Here is a link](https://rpubs.com/hsarfraz76/1349752) to my RPubs page where I summarize all of the key statistical concepts that I have learned in this course.
 
 Number of..
 * Primary datasets analysed:
