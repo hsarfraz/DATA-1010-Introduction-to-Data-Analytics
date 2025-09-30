@@ -67,8 +67,6 @@ Number of..
   * measure of central tendency (mean, median, or mode)
   * explanatory variables (a type of independent variable) are only used in advanced statistical modeling (ex. regression)
   * variability
- 
- st reliable measure of central tendency (mean or median) based on the skew and outliers. Another point that this assignment illustrates is that explanatory variables (a type of independent variable) are not called explanatory variables in scatterplots because we are only visualizing relationships or distributions. Explanatory variables are only mentioned in more advanced statistical modeling such as regression analysis. This assignment also used the flights dataset to illustrate how an increase in data reduces variability in the mean by lowering the standard error. This makes measures of central tendency, like the mean, more stable and representative of the underlying trend.
 
 ## Week 4 [link]()
 
