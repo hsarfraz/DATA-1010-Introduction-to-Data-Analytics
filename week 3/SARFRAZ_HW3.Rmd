@@ -1,0 +1,393 @@
+---
+title: "SARFRAZ_HW3"
+author: "Hussain Sarfraz"
+date: "2025-09-24"
+output:
+  html_document:
+    toc: true
+    theme: united
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(nycflights13)
+library(scales)
+```
+
+# Dataset Exploration
+
+The diamonds dataset contains measurements on 10 different variables (like price, color, clarity, etc.) for 53,940 different diamonds.
+
+```{r}
+cat('number of rows:',nrow(diamonds), #53,940 
+   '\nnumber of columns:',ncol(diamonds)) #10
+
+glimpse(flights) #shows rows, columns, and snummary of all columns
+summary(flights) #column names
+```
+
+## Description of columns
+
+[Description of this dataset on RPubs](https://rpubs.com/Davo2812/1102821)
+
+| Column Name  | Variable Type | Variable Description |
+| ------------- | ------------- | ------------- |
+| carat  | numerical continuous  | diamond carat (aka the unit of measurment which indicates the diamond's weight)  |
+| cut  | categorical ordinal  | The diamonds quality in terms of its proportions, symmetry, and polish, which determine how well it interacts with light to produce brilliance and sparkle  |
+| color  | categorical ordinal  | A diamonds hue, from colorless to yellow, gray, brown and nearly every shade of the rainbow  |
+| clarity  | categorical ordinal  | A diamond's internal characteristics, or inclusions, and surface imperfections, or blemishes, under 10-power magnification  |
+| depth  | numerical continuous  |  vertical measurement from the top table to the pointed culet at the bottom. shown as a percentage  |
+| table  | numerical continuous  | The diamond's flat, top facet which is clearly visible when viewed from above. The ideal table percentage varies by shape  |
+| price  | numerical discrete  | 	price of diamond  |
+| x  | numerical continuous  | diamond length |
+| y  | numerical continuous  | diamond width  |
+| z  | numerical continuous  | diamond depth  |
+
+# Question 1 
+
+Above, we analyzed the effect of carat, cut, and color on a diamond’s price. But what about the 4th c, clarity?
+
+If you need more information about a diamonds clarity, color, or cut you can consult [this link](https://www.americangemsociety.org/page/clarityscale) from the American gem society.
+
+## Part A (diamond clarity and price)
+
+How does clarity matter to a diamond’s price?
+
+<ins> Answer </ins>
+
+So figure out how diamond clarity (categorical ordinal variable) relates to diamond price (numerical continuous variable) I looked at the frequency distribution of different diamond clarity types through a bar plot. The bar plot showed that diamonds with a clarity scale of 6, 5, 4, and 3 have more occurrences in the frequency distribution. This means that I should look at those clarity types when doing any sort of analysis between clarity and price, since those results will be more accurate and I can stay with greater confidence that any result derived from these values will be accurate. As compared to Diamonds with other clarity types, such as 8, 2, 1, and 0, they have really small count in the dataset which means that I should look at any insights, derived from these diamond types, with caution. 
+
+After I analysed the frequency distribution of the diamond clarity types I decided to compare the diamond clarity and price through a box plot. For all box plots, the mean was greater than the median which means that all of the distributions were right skewed. As a result, I needed to look at the median since it was more reliable measure of central tendency for the distribution. 
+
+When looking at the median prices, I noticed that for Diamond cut clarity scales of 6, 5, 4, and 3, the price for the Diamonds with a lower grade are higher. The median is higher as compared to the Diamonds with a higher grade, such as 3, 4. I also noticed the same pattern emerge with the Diamonds with clarity grades of 0, 1, and 2.
+
+In conclusion, I would say that Diamonds that have a lower grade clarity tend to have a higher price as compared to Diamonds with a higher grade clarity. To examine why diamonds with lower clarity grades have a higher price we would need to look at whether other C's (cut, color, and carat) play a role in bringing up the price of diamonds with a low clarity grade.
+
+Here are the steps I used to answer this question:
+
+### Step 1: Exploratory Data Analysis (frequency distribution for a categorical variable with bar charts)
+
+Created a bar chart of the clarity variable to examine the **frequency distribution** of diamonds across clarity types. A frequency distribution helps assess how balanced or uneven the sample sizes are among categories, which is important because **unequal group sizes can affect the reliability of comparisons** in later steps (e.g., when relating clarity to price). .
+
+It is important to note that frequency distributions are used to summarize categorical variables. Frequency distribution allows us to see the mode, the category that occurs the most, which can be analogous to central tendency in numerical variables. Although it is important to note that the comparison is not entirely similar since central tendencies contain the mean, median, and mode. Frequency distributions don’t invalidate our analysis, they inform us about how much confidence you should have in those averages and comparisons.
+
+Bar charts are not the only type of graphs which can show frequency distributions. I have included a table below which indicates the different graphs that you can use to illustrate frequency distributions.
+
+| Graph Name  | Frequency Distribution Type | Purpose |
+| ------------- | ------------- | ------------- |
+| Bar Chart  | frequency distribution of a single variable | To assess how balanced or uneven the sample sizes are among categories. Unequal group sizes can affect the reliability of comparisons to different variables |
+| Bubble Chart  | joint frequency distribution | To assess how balanced or uneven the sample sizes are among **two categories/variables** which will inform us whether the averages we are calculating within those groups are accurate or not. |
+| Heat map  | joint frequency distribution | To assess how balanced or uneven the sample sizes are among **two categories/variables** which will inform us whether the averages we are calculating within those groups are accurate or not. |
+
+```{r}
+# STEP 1: creating the barchart to count 
+#         number of clarity types in dataset
+# 8 (I1) = Lowest clarity grade
+# 0 (IF) = Highest clarity grade
+
+ggplot(data=diamonds) + 
+  geom_bar(aes(x=clarity)) +
+  scale_y_continuous(breaks=c(0,2500,5000,7500,10000,12500)) + 
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  labs(y = "Number of Diamonds",
+       x = 'Diamond Clarity Scale', 
+       title = "Number of Diamond Clarity Types",
+       caption = "Dataset: Diamonds Dataset | Data Source: ggplot2 package")
+```
+
+Getting the exact counts through a table:
+
+```{r}
+diamonds %>%
+  group_by(clarity) %>% 
+  count()
+```
+
+### Step 2: Exploratory Data Analysis (distribution for a numerical variable with box plots)
+
+Based on the bar plot results from step 1 the frequency distribution of diamond clarity types shows that the diamonds data set has a low sample size of diamonds with clarity type "8/I1", "2/VVS2", "1/VVS1", and "0/IF". These results tell us that when interpreting the box plot prices by clarity, the results of "8/I1", "2/VVS2", "1/VVS1", and "0/IF" should be treated with caution because of their relatively low sample sizes. **Note**: Keep in mind that 8 is the lowest clarity grade while 0 is the highest
+
+The box plot highlights the median and distribution shape (via quartiles, spread, and skewness), while also showing potential outliers that distort the mean”. I box plot has:
+
+* Minimum:
+* Lower Quartile Q1:
+* Median (Quartile Q2): The middle value in the dataset
+* Upper Quartile Q3:
+* Maximum (Quartile Q4):
+* Whiskers: Left whisker represent quartile 1 and the whisker on the right represent quartile 4
+* Interquartile range (IQR): The spread of the middle 50% of a data set
+* Outliers: Points beyond whiskers
+* Mean (optional, sometimes plotted as a dot): The arithmetic average.
+
+The table below highlights the skew of the distribution based on the mean and median in the box plot. The skew helps you decide which measure of central tendency to trust (median vs. mean).
+
+| Skew  | Median and Mean positions | Purpose |
+| ------------- | ------------- | ------------- |
+| Right Skew  | Mean > Median | the mean is inflated relative to most of the data so the **median is more reliable for central tendency**. If you use the mean, it might suggest the average is more expensive/higher than the actual data points (when outliers are removed) |
+| Left Skew  | Mean < Median | the mean is deflated relative to most of the data so the **median is more reliable for central tendency**. If you use the mean, it might suggest the average a cheaper/lower than most of the data (when outliers are removed). |
+| Middle Skew/ Symmetrical Distribution  | Mean = Median = Mode | Mean is reliable for central tendency. The data is predictable and well-behaved |
+
+```{r}
+ggplot(diamonds, mapping=aes(x=clarity,y=price)) + 
+  geom_boxplot() + 
+  stat_summary(fun = mean, geom = "point", shape = 18, size = 3, color = "red") +
+  coord_flip() +
+  scale_y_continuous(breaks=c(0,2500,5000,10000,15000,20000)) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))  +
+  labs(y = "Price",
+       x = 'Diamond Clarity Scale', 
+       title = "Price of Diamond Clarity Types",
+       caption = "Dataset: Diamonds Dataset | Data Source: ggplot2 package")
+```
+
+## Part B (diamond clarity relation to carat, cut and color)
+
+How is clarity related to the other Cs? 
+
+<ins> Answer </ins>
+
+I used a heat map to graph the relationship with diamond clarity (categorical ordinal variable) and diamond color and cut (both categorical ordinal variables). I used a box plot to graph the relationship between diamond clarity and carat (numerical continuous variable).
+
+I noticed that with both heat maps the diamond clarity grades of 6,5,4,3 had high counts (I got an idea of these counts by looking at the columns of each clarity type and seeing which columns have the most color shades). 
+
+In terms of color, I noticed that the data set has high counts of colors D,E,F,G,H. Diamond cuts of ideal and premium had high counts in the data set. When examining the relationship between these variables in a scatter plot I would need to make sure that my analysis looks at the under represented groups with caution.
+
+All of the box plots of the diamond clarity and carat/weight graph had a right skew since the mean was greater than the median. It also means that the median is a more reliable measure for central tendency. When looking at the graph I have noticed that the diamonds with a low clarity grade have a higher weight. 
+
+The observations from the box plot lead me to a working hypothesis that, despite having lower grades in cut, clarity, and color, the weight of the diamond can keep its price high. 
+
+To answer this question I followed these steps:
+
+### Step 3: Exploratory Data Analysis (joint frequency distributions for a categorical ordinal variables with heat maps)
+
+```{r}
+#heat map
+clarity_color_counts <- diamonds %>%
+  group_by(clarity, color) %>% 
+  count()
+
+ggplot(clarity_color_counts, aes(x=clarity, y=color, fill=n)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(low="white", high="blue") +
+  labs(fill = "Count", 
+       y = "Diamond Color",
+       x = 'clarity grade', 
+       title = "Heat map to display the joint frequency distributions of clarity and color",
+       caption = "Dataset: Diamonds Dataset | Data Source: ggplot2 package")
+```
+
+```{r}
+#heat map
+clarity_cut_counts <- diamonds %>%
+  group_by(clarity, cut) %>% 
+  count()
+
+ggplot(clarity_cut_counts, aes(x=clarity, y=cut, fill=n)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(low="white", high="blue") +
+  labs(fill = "Count", 
+       y = "Cut Grade",
+       x = 'clarity grade', 
+       title = "Heat map to display the joint frequency distributions of clarity and cut",
+       caption = "Dataset: Diamonds Dataset | Data Source: ggplot2 package")
+```
+
+### Step 4: Exploratory Data Analysis (distribution for a numerical variable with box plots)
+
+```{r}
+ggplot(diamonds, mapping=aes(x=clarity,y=carat)) + 
+  geom_boxplot() + 
+  stat_summary(fun = mean, geom = "point", shape = 18, size = 3, color = "red") +
+  coord_flip() + 
+  scale_x_discrete(labels = c(
+    "I1" = 8, "SI2"= 6 , "SI1"= 5 , "VS2"= 4,
+    "VS1"= 3, "VVS2"= 2, "VVS1"= 1, "IF" = 0 )) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))  +
+  labs(y = "Carat/Weight",
+       x = 'Diamond Clarity Scale', 
+       title = "Diamond carat for each clarity grade/group",
+       caption = "Dataset: Diamonds Dataset | Data Source: ggplot2 package")
+```
+
+## Part C (conclusion)
+
+What would you conclude based on your analysis? 
+
+<ins> Answer </ins>
+
+Based on my analysis with the scatter plots, pairing Diamond carat with Price and then creating separate scatter plots which group diamond Color, Cut, Clarity as groups, I have observed that diamonds with high-grade features usually have less weight. 
+
+For example, I noticed that the Diamond Color D has less weight, the Diamond with a Cut of Ideal also had less weight, and the Diamond with the Clarity of IF also has less weight. All of these features are high grade features. 
+
+Diamonds with less weight have the same price as diamonds with more weight. But the diamonds with more weight don't have high-grade features.
+
+These observations from the scatter plot are strengthening my inclination towards the working hypothesis that I was forming in part B. Diamonds with high weight have a high price because of their weight, not because of their features. And then diamonds with less weight have a high price because of their high-grade features.
+
+### Step 5: Exploratory Data Analysis (scatter plot comparing two numerical variables, grouped by categorical variable)
+
+```{r}
+# STEP 4: creating a scatterplot of carat-price and adding a 
+#         color aethetic that represents color and cut
+
+#  carat-price scatterplot with a color aesthetic 
+ggplot(data = diamonds) + 
+  geom_point(aes(x = carat, y = price, color=color), alpha=0.5) + 
+  ylab("Price") + 
+  xlab("Diamond Weight (carat)") + 
+  scale_y_continuous(breaks=c(0,5000,10000,15000,20000)) + 
+  ggtitle("Price of Diamond by their weight, grouped by color") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_color_discrete(name="Diamond Color")
+
+#  carat-price scatterplot with a cut aesthetic 
+ggplot(data = diamonds) + 
+  geom_point(aes(x = carat, y = price, color=cut), alpha=0.5) + 
+  ylab("Price") + 
+  xlab("Diamond Weight (carat)") + 
+  scale_y_continuous(breaks=c(0,5000,10000,15000,20000)) + 
+  ggtitle("Price of Diamond by their weight, grouped by cut") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_color_discrete(name="Diamond Cut")
+
+#  carat-price scatterplot with a cut aesthetic 
+ggplot(data = diamonds) + 
+  geom_point(aes(x = carat, y = price, color=clarity), alpha=0.5) + 
+  ylab("Price") + 
+  xlab("Diamond Weight (carat)") + 
+  scale_y_continuous(breaks=c(0,5000,10000,15000,20000)) + 
+  ggtitle("Price of Diamond by their weight, grouped by clarity") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_color_discrete(name="Diamond Clarity")
+```
+
+
+3.	Use the carat and price scatter plot and add a color aesthetic which represents the various clarity types in our dataset. 
+4.	Compared all the carat and price scatter plots, each having a different aesthetic of color, cut, and clarity
+5.	Created a geom_count graph that compares clarity with color and cut
+
+
+
+# Question 2 (number of flights and average arrival delay)
+
+Calculate the number of flights for each destination in the NYC flights data. Plot that against the average arrival delay for each destination. What, if anything, would you conclude? Is this surprising? Why or why not?
+
+<ins> Answer </ins>
+
+This question highlights how more data points reduce the variability of the mean (standard error). This makes measures of central tendency like the mean more stable and representative of the underlying trend.
+
+Based on my output, I came to the conclusion that as the number of flights increase, for each destination, the average arrival delay decreases and slowley moves towards zero. I reached this conslusion by looking at how the geom_smooth line gradually goes down. I also saw that there were many high average arival delays when the number of flights was close to zero. As the number of flights reached 2500 and onwards, the high average of arrival delays went down from 30 to around 10. 
+
+```{r}
+# Question 2
+
+# STEP 1: creating a object that has non-cancelled flights
+not_cancelled <- flights %>% 
+  filter(!is.na(dep_delay), !is.na(arr_delay))
+
+# STEP 2: scatterplot of flight # for each destination against
+#         ave. arrival delay for each destination
+
+not_cancelled %>% 
+  group_by(dest) %>% 
+  summarize(., count =n() ,
+            avg_delay1 = mean(arr_delay)) %>%
+  ggplot(aes(x = count, y = avg_delay1)) +   
+  geom_point() + 
+  geom_smooth() +
+  ylab("Average Arrival Delay") + 
+  xlab("Number of Flights for each Destination") + 
+  scale_y_continuous(breaks=c(-20,-10,0,10,20,30,40,50)) +
+  scale_x_continuous(breaks=c(0,2500,5000,7500,10000,12500,15000,17000))+
+  ggtitle("Destination arrival delays and flight numbers") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+# Question 3
+
+This question will ask you to solve some problems with the nycflights dataset.
+
+## Part A (airplane average speed and distance travelled)
+
+Plot average speed against distance. What do you conclude?
+
+<ins> Answer </ins>
+
+My output shows that as a airplanes average speed increases the airplane gets to travel a greater distance. There are more outliers such as the airplanes which have a speed of 10-12. These planes do not travel a big distance. In fact, the planes travel a short distance.
+
+A possible explanation for these ourliers is that airplanes with a high average speed probably did not travel a great distance because maybe the planes engine was too large or small? There could be a possibility that there were some airplanes that had to re-route or take a long way to their destination (this could potentially explain why they are some outliers in the upper part of the graph. Weather could also be another factor that prevented planes, with high average speeds, to not go far. 
+
+
+```{r}
+# Question 3A
+
+# scatterplot of average airplane speed and distance airplane travelled 
+not_cancelled %>% 
+  mutate(avg_speed = distance/air_time) %>%
+  ggplot(aes(x = avg_speed, y = distance)) +   
+    geom_point() +   
+  ylab("Distance Airplane Travelled") + 
+  xlab("Airplane Average Speed") + 
+  scale_y_continuous(breaks=c(0,1000,2000,3000,4000,5000)) +
+  scale_x_continuous(breaks=c(0,2,4,6,8,10,12))+
+  ggtitle("Distance Travelled by Average Airplane Speed") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+## Part B (on time flight proportions)
+
+Create a new variable that records whether or not a flight arrived on time. 
+
+Hint: define a flight to be “on time” if it gets to the destination on time or earlier than expected, regardless of any departure delays. Then, determine the on-time arrival percentage based on whether the flight departed on time/early or not (i.e., whether there was a departure delay). What percent of flights that were “delayed” departing arrive “on time”?
+
+<ins> Answer </ins>
+
+27.7 percent of flights that were delayed for departure arrived on time.
+
+I categorized the arrival flights that were on time from a 1 to 0 scale (this was done so the proportion of early/on-time arrival flights can be calculated. I also did the same for flights that had a departure delay. 
+
+Since the question was asking for flights that were delayed and still arrived on time I had to made sure I was getting the proportion of arrived flights that were also delayed. This is why I added the filter funtion (to only have the data of delayed flights).
+
+After that, I used the summarize function to calculate the proportion/percantage of flights that had a depature delay and still arrived early/on-time. 
+
+```{r}
+# Question 3B
+
+# calculation to get the proportion on arrived flights that are on time 
+ # (even though the flight was delayed)
+not_cancelled %>% 
+  mutate(on_time = ifelse((arr_delay <= 0),1,0),
+         delay_flights = ifelse((dep_delay > 0),1,0)) %>%
+  filter(delay_flights == 1) %>%
+  summarize(., on_time_proportion = 100*mean(on_time))
+```
+
+
+## Part C (departure delay and on time flights proportions)
+
+Building on the question above, determine (roughly) what the cutoff point is for departure delays where you can still expect to get to your destination on time.
+
+<ins> Answer </ins>
+
+The rough cutoff point for departure delays is 7.47. This is a rough estimate that if you departure delay is 7.47 minutes long then there is still a change that your flight would arrive on time/early. I reached this conclusion from the code I wrote below.
+
+I kept the code similar to the one in part B. The detail that I did change was that I filtered delayed flights and flights that arrived early/on-time. I did this because the question was asking for a rough estimate of a cutoff point for departure delays that could gauruntee a early/on-time arrival. After I did this, I got the mean/average of the departure delays that arrived early/on-time. Calculating this would give me a good estimate of the average departure delay cutoff that would still highly gauruntee a on-time/early arrival. 
+
+```{r}
+#calculation to get the estimated delay time of when a flights arrival 
+ # would be on time
+
+not_cancelled %>% 
+  mutate(on_time = ifelse((arr_delay <= 0),1,0),
+         delay_flights = ifelse((dep_delay > 0),1,0)) %>%
+  filter(delay_flights == 1, on_time == 1) %>%
+  summarize(.,mean_of_dep_delay = mean(dep_delay))
+```
