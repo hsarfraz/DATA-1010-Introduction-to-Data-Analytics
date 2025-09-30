@@ -49,6 +49,8 @@ Number of..
 
 ## Week 3 [github page link](https://github.com/hsarfraz/DATA-1010-Introduction-to-Data-Analytics/blob/main/week%203/notes.md)
 
+[Here is a link to my published homework on RPubs](https://rpubs.com/hsarfraz76/1350161)
+
 * week 1,2 libraries + scales library
 * using the diamond dataset which is in the ggplot package from the tidyverse library
 * variable types (categorical nominal, categorical ordinal, numerical discrete, numerical continuous)
