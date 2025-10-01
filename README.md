@@ -10,9 +10,9 @@ Number of..
 * Primary datasets analysed:
 * Secondary datasets analysed (pre-built datasets): 1
 * Boxplots analysed: 3
-* Scatterplots analysed: 6
+* Scatterplots analysed: 10
 * Barcharts analysed: 1
-* Regression lines: 2
+* Regression lines: 4
 * Bubble plot: 2
 * Heatmap: 2
 
@@ -69,6 +69,14 @@ Number of..
   * variability
 
 ## Week 4 [link]()
+
+[Here is a link to my published homework on RPubs](https://rpubs.com/hsarfraz76/1350660)
+
+* variable types (categorical nominal, categorical ordinal, numerical discrete, numerical continuous)
+* Dataset name: flights dataset
+* Dataset Size: 336776 rows and 19 columns
+* Outputs produced (x-axis/independent variable & y-axis/dependent variable)
+  * **Scatter Plot w/ regression line** (numerical discrete & numerical continuous)
 
 ## Week 5 [link]()
 
